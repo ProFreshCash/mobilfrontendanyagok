@@ -10,9 +10,14 @@ export default class PizzaTranslator extends Component {
   render() {
     return (
       <View style={{padding: 10}}>
+        <View style={{flex: 1, flexDirection: "row",}}>
         <Text style={{padding: 10,marginBottom: 5 ,  fontSize: 20}}>
           Magasság(m): 
         </Text>
+        <TextInput
+      style={{ height: 40, borderColor: 'black', borderWidth: 3, borderRadius: 25, width: 200 }}
+        />
+        </View>
         <Text style={{padding: 10, marginBottom: 5 , fontSize: 20}}>
           Szélesség(m): 
         </Text>
