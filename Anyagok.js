@@ -28,17 +28,35 @@ export default class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View style={{padding: 10,}}>
+      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto"}}>
             <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-          <View style={{paddingBottom: 20}}>
-          <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_nevesmeret}cm</Text>
-          <Text style={{color:"black",fontSize:16,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_mennyiseg} db</Text>
+          <View style={{paddingBottom: 20, }}>
+           <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} >
+
+
+        <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_nevesmeret}cm</Text>
+        <Text style={{color:"black",fontSize:16,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_mennyiseg} db</Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_ar} Ft</Text>
           <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_rendelő} </Text>
-          <Image  source={{uri: 'http://localhost:3000/'+item.anyag_kep}} style={{width:200,height:200}} />  
+
+         </View>
+
+        <View style={{flex: 1, backgroundColor: 'skyblue'}}>
+        <Image  source={{uri: 'http://localhost:3000/'+item.anyag_kep}} style={{width:200,height:200}} />
+          </View>
+        
+      </View>
+        
+          
+         
+        
+
+         
+
           </View>
         
         }
