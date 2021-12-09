@@ -22,7 +22,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Anyagok">
         <Drawer.Screen name="Kalkulátor" component={CalcScreen} />
         <Drawer.Screen name="Anyagok" component={MattersScreen} />
       </Drawer.Navigator>

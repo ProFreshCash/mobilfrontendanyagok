@@ -12,7 +12,7 @@ export default class PizzaTranslator extends Component {
       <View style={{padding: 20, marginLeft:"auto", marginRight: "auto", borderRadius: 15, borderColor: "blue", borderWidth: 5, marginTop: 20}}>
         <View style={{flex: 1, flexDirection: "row",}}>
         <Text style={{padding: 10,marginBottom: 5 ,  fontSize: 25}}>
-          Magasság(m): 
+          Magasság (m): 
         </Text>
         <TextInput
       style={{ height: 40, borderColor: 'black', borderWidth: 3, borderRadius: 25, width: 200, marginLeft: 15 }}
@@ -20,7 +20,7 @@ export default class PizzaTranslator extends Component {
         </View>
         <View style={{flex: 1, flexDirection: "row",}}>
         <Text style={{padding: 10, marginBottom: 5 , fontSize: 25}}>
-          Szélesség(m): 
+          Szélesség (m): 
         </Text>
         <TextInput
       style={{ height: 40, borderColor: 'black', borderWidth: 3, borderRadius: 25, width: 200, marginLeft: 20}}
@@ -28,7 +28,7 @@ export default class PizzaTranslator extends Component {
         </View>
         <View style={{flex: 1, flexDirection: "row",}}>
         <Text style={{padding: 10,marginBottom: 5 , fontSize: 25}}>
-          Hosszúság(m): 
+          Hosszúság (m): 
         </Text>
         <TextInput
       style={{ height: 40, borderColor: 'black', borderWidth: 3, borderRadius: 25, width: 200, marginLeft: 10 }}
