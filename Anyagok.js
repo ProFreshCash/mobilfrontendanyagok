@@ -8,7 +8,7 @@ export default class PizzaTranslator extends Component {
     this.state ={ isLoading: true}
   }
     componentDidMount(){
-      return fetch('http://localhost:3000/anyagok')
+      return fetch('http://192.168.7.114:3000/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -29,13 +29,13 @@ export default class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto"}}>
+      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto", minWidth: 500}}>
             <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
           <View style={{paddingBottom: 20, }}>
-           <View style={{flex: 1, flexDirection: 'row'}}>
+           <View style={{flex: 1, flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10, }}>
         <View style={{flex: 1, width: 400,height: 300,marginRight: 10}} >
 
 
@@ -47,7 +47,7 @@ export default class PizzaTranslator extends Component {
          </View>
 
         <View style={{flex: 1,}}>
-        <Image  source={{uri: 'http://localhost:3000/'+item.anyag_kep}} style={{width:250,height:250}} />
+        <Image  source={{uri: 'http://192.168.7.114:3000/'+item.anyag_kep}} style={{width:250,height:250}} />
           </View>        
       </View>
   </View>
