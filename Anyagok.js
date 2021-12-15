@@ -8,7 +8,7 @@ export default class PizzaTranslator extends Component {
     this.state ={ isLoading: true}
   }
     componentDidMount(){
-      return fetch('http://192.168.7.114:3000/anyagok')
+      return fetch('http://192.168.1.107:3000/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -29,14 +29,14 @@ export default class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto", minWidth: 500}}>
+      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto",}}>
             <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-          <View style={{paddingBottom: 20, }}>
+          <View style={{paddingBottom: 20, width: 500,}}>
            <View style={{flex: 1, flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10, }}>
-        <View style={{flex: 1, width: 400,height: 300,marginRight: 10}} >
+        <View style={{flex: 1, width: 400,height: 300, marginLeft: "auto", marginRight: "auto"}} >
 
 
         <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >Neve és mérete: {item.anyag_nevesmeret}cm</Text>
@@ -46,8 +46,8 @@ export default class PizzaTranslator extends Component {
 
          </View>
 
-        <View style={{flex: 1,}}>
-        <Image  source={{uri: 'http://192.168.7.114:3000/'+item.anyag_kep}} style={{width:250,height:250}} />
+        <View style={{flex: 1,marginLeft: 5}}>
+        <Image  source={{uri: 'http://192.168.1.107:3000/'+item.anyag_kep}} style={{width:230,height:230}} />
           </View>        
       </View>
   </View>
