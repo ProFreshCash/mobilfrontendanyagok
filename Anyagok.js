@@ -8,7 +8,7 @@ export default class PizzaTranslator extends Component {
     this.state ={ isLoading: true}
   }
     componentDidMount(){
-      return fetch('http://192.168.1.107:3000/anyagok')
+      return fetch('http://192.168.2.102:3000/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -47,7 +47,7 @@ export default class PizzaTranslator extends Component {
          </View>
 
         <View style={{flex: 1,marginLeft: 5}}>
-        <Image  source={{uri: 'http://192.168.1.107:3000/'+item.anyag_kep}} style={{width:230,height:230}} />
+        <Image  source={{uri: 'http://192.168.2.102:3000/'+item.anyag_kep}} style={{width:230,height:230}} />
           </View>        
       </View>
   </View>
