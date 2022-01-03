@@ -22,7 +22,8 @@ export default class PizzaTranslator extends Component {
   this.setState({ hosszusag: text })
 }
   szamitas = (hosszusag, szelesseg, magassag) =>{
-    var eredmeny = hosszusag*szelesseg*magassag;
+    var eredmeny = parseInt(hosszusag)*parseInt(szelesseg)*parseInt(magassag);
+    this.setState({ered: eredmeny})
   }
 
   render() {
@@ -36,6 +37,7 @@ export default class PizzaTranslator extends Component {
         <TextInput
       style={{ height: 40, borderColor: 'black', borderWidth: 3, borderRadius: 25, width: 200, marginLeft: 15 }}
       onChangeText={this.magassagkezel}
+      value={this.state.magassag}
         />
         </View>
         <View style={{flex: 1, flexDirection: "row",}}>
