@@ -1,51 +1,83 @@
-render() {
-      return (
-         <View style = {styles.container}>
-         <Text style={styles.title}>BMI Calculator</Text>
-            
-         <Text  style = {styles.label}>Height</Text>
-         <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Height (Cm)"
-               autoCapitalize = "none"
-               onChangeText = {this.handleHeight}/>
-         <Text  style = {styles.label}>Weight</Text>
-         <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Weight (Kg)"
-               autoCapitalize = "none"
-               onChangeText = {this.handleWeight}/>
-            
-          <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-              () => this.calculate(this.state.height, this.state.weight)
-          }>
-          <Text style = {styles.submitButtonText}> Calculate </Text>
-          </TouchableOpacity>
-          <Text style = {styles.output}>{this.state.bmi}</Text>
-          <Text style = {styles.resultText}>{this.state.BmiResult}          </Text>
-</View>
-)
-}
+import React, { useState } from "react";
+import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
+const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  return (
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.textStyle}>Show Modal</Text>
+      </Pressable>
+    </View>
+  );
+};
 
-state = {
-      height: '',
-      weight: '',
-      bmi: '',
-      BmiResult: '',
-   }
-   handleHeight = (text) => {
-      this.setState({ height: text })
-   }
-   handleWeight = (text) => {
-      this.setState({ weight: text })
-   }
-   calculate = (height, weight) => {
-      //calculation
-      var result = (parseFloat(weight)*10000)/(parseFloat(height)*parseFloat(height));
-      result = result.toFixed(2);
-      //display result
-      this.setState({ bmi: result })
-   }
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
+});
+
+export default App;
