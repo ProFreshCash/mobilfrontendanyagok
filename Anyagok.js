@@ -13,7 +13,7 @@ export default class PizzaTranslator extends Component {
 
   }
     componentDidMount(){
-      return fetch('http://192.168.2.102:3000/anyagok')
+      return fetch('http://192.168.1.107:3000/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -56,7 +56,7 @@ export default class PizzaTranslator extends Component {
             transparent={false}
             visible={this.state.isVisible}
             onRequestClose={() => {
-              Alert.alert('Modal has now been closed.');
+             // Alert.alert('Modal has now been closed.');
             }}>
           <View style = {styles.modal} /* Modal Törzse */>
 
@@ -75,7 +75,7 @@ export default class PizzaTranslator extends Component {
           }}
         >
           <Image style={{width: '100%', height: '100%'}}
-                 source={{uri: 'http://192.168.2.102:3000/'+this.state.anyag.anyag_kep}}
+                 source={{uri: 'http://192.168.1.107:3000/'+this.state.anyag.anyag_kep}}
                  resizeMode="contain" />
         </ReactNativeZoomableView>
       </View>
@@ -111,7 +111,7 @@ export default class PizzaTranslator extends Component {
         <View style={{flex: 1,marginLeft: 5}}>
         <TouchableOpacity  onPress={() => { this.displayModal(true); this.setState({anyag:item})}}>
         <Image style={{ width: 200, height: 200, marginLeft:15}}
-                 source={{uri: 'http://192.168.2.102:3000/'+item.anyag_kep}}
+                 source={{uri: 'http://192.168.1.107:3000/'+item.anyag_kep}}
                  resizeMode="contain"/>
         </TouchableOpacity >
         </View>        
