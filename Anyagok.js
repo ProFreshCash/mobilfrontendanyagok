@@ -4,16 +4,15 @@ import { Text, View, FlatList, Image,Modal,StyleSheet,TouchableOpacity  } from '
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
-
+const CONFIG = require('./config.js');
 
 export default class PizzaTranslator extends Component {
   constructor(props) {
     super(props);
     this.state ={ isLoading: true, isVisible:false,anyag:[]}
-
   }
     componentDidMount(){
-      return fetch('http://192.168.1.107:3000/anyagok')
+      return fetch('http://'+CONFIG.IP+':3000/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -75,7 +74,7 @@ export default class PizzaTranslator extends Component {
           }}
         >
           <Image style={{width: '100%', height: '100%'}}
-                 source={{uri: 'http://192.168.1.107:3000/'+this.state.anyag.anyag_kep}}
+                 source={{uri: 'http://'+CONFIG.IP+':3000/'+this.state.anyag.anyag_kep}}
                  resizeMode="contain" />
         </ReactNativeZoomableView>
       </View>
@@ -111,7 +110,7 @@ export default class PizzaTranslator extends Component {
         <View style={{flex: 1,marginLeft: 5}}>
         <TouchableOpacity  onPress={() => { this.displayModal(true); this.setState({anyag:item})}}>
         <Image style={{ width: 200, height: 200, marginLeft:15}}
-                 source={{uri: 'http://192.168.1.107:3000/'+item.anyag_kep}}
+                 source={{uri: 'http://'+CONFIG.IP+':3000/'+item.anyag_kep}}
                  resizeMode="contain"/>
         </TouchableOpacity >
         </View>        
