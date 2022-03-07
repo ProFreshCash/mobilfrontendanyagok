@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { Text, View, FlatList, Image,Modal,StyleSheet,TouchableOpacity  } from 'react-native';
-import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 const CONFIG = require('./config.js');
@@ -12,7 +11,7 @@ export default class PizzaTranslator extends Component {
     this.state ={ isLoading: true, isVisible:false,anyag:[]}
   }
     componentDidMount(){
-      return fetch('http://'+CONFIG.IP+':3000/anyagok')
+      return fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/anyagok')
         .then((response) => response.json())
         .then((responseJson) => {
   
@@ -35,16 +34,6 @@ export default class PizzaTranslator extends Component {
     this.setState({isVisible: show})
   }
    
-  logOutZoomState = (event, gestureState, zoomableViewEventObject) => {
-    console.log('');
-    console.log('');
-    console.log('-------------');
-    console.log('Event: ', event);
-    console.log('GestureState: ', gestureState);
-    console.log('ZoomableEventObject: ', zoomableViewEventObject);
-    console.log('');
-    console.log(`Zoomed from ${zoomableViewEventObject.lastZoomLevel} to  ${zoomableViewEventObject.zoomLevel}`);
-  }
 
   render() {
     return (
@@ -61,22 +50,9 @@ export default class PizzaTranslator extends Component {
 
           
           <View style={{width:230,height:230}}>
-        <ReactNativeZoomableView
-            maxZoom={1.5}
-            minZoom={0.5}
-            zoomStep={0.5}
-            initialZoom={1}
-            bindToBorders={true}
-            onZoomAfter={this.logOutZoomState}
-            style={{
-              padding: 10,
-              backgroundColor: 'white',
-          }}
-        >
           <Image style={{width: '100%', height: '100%'}}
-                 source={{uri: 'http://'+CONFIG.IP+':3000/'+this.state.anyag.anyag_kep}}
+                 source={{uri: 'http://'+CONFIG.IP+':'+CONFIG.PORT+'/'+this.state.anyag.anyag_kep}}
                  resizeMode="contain" />
-        </ReactNativeZoomableView>
       </View>
           </View>
 
@@ -91,26 +67,25 @@ export default class PizzaTranslator extends Component {
 
 
 
-            <FlatList
+          <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-          <View style={{paddingBottom: 20, width: 500,}}>
-           <View style={{flex: 1, flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10, }}>
+        <View style={{paddingBottom: 20, width: 500,}}>
+        <View style={{flex: 1, flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10, }}>
         <View style={{flex: 1, width: 400,height: 300, marginLeft: "auto", marginRight: "auto"}} >
 
 
-        <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >Neve és mérete: {item.anyag_nevesmeret}cm</Text>
-        <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Mennyiség: {item.anyag_mennyiseg} db</Text>
-          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Ár: {item.anyag_ar} Ft</Text>
-          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >Rendelő: {item.anyag_rendelő} </Text>
-
+        <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyagneve}</Text>
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Ár: {item.merete} Ft</Text>
+          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >Rendelő: {item.anyag_ar} </Text>
+          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >Rendelő: {item.anyag_fajtaja} </Text>
          </View>
 
         <View style={{flex: 1,marginLeft: 5}}>
         <TouchableOpacity  onPress={() => { this.displayModal(true); this.setState({anyag:item})}}>
         <Image style={{ width: 200, height: 200, marginLeft:15}}
-                 source={{uri: 'http://'+CONFIG.IP+':3000/'+item.anyag_kep}}
+                 source={{uri: 'http://'+CONFIG.IP+':'+CONFIG.PORT+'/'+item.anyag_kep}}
                  resizeMode="contain"/>
         </TouchableOpacity >
         </View>        
