@@ -49,10 +49,8 @@ export default class PizzaTranslator extends Component {
           <View style = {styles.modal} /* Modal Törzse */>
 
           
-          <View style={{width:230,height:230}}>
-          <Image style={{width: '100%', height: '100%'}}
-                 source={{uri: 'http://'+CONFIG.IP+':'+CONFIG.PORT+'/'+this.state.anyag.anyag_kep}}
-                 resizeMode="contain" />
+          <View style={{width:400, marginLeft:"auto", marginRight:"auto"}}>
+          <Text style={{color:"black",fontSize:16,textAlign:"left",marginTop:5,marginBottom:5}}   >{this.state.anyag.anyag_leiras} </Text>
       </View>
           </View>
 
@@ -77,9 +75,9 @@ export default class PizzaTranslator extends Component {
 
 
         <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyagneve}</Text>
-          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Ár: {item.merete} Ft</Text>
-          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >Rendelő: {item.anyag_ar} </Text>
-          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >Rendelő: {item.anyag_fajtaja} </Text>
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_merete}</Text>
+          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_ar} </Text>
+          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_fajtaja} </Text>
          </View>
 
         <View style={{flex: 1,marginLeft: 5}}>
