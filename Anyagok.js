@@ -49,7 +49,7 @@ export default class PizzaTranslator extends Component {
           <View style = {styles.modal} /* Modal Törzse */>
 
           
-          <View style={{width:400, marginLeft:"auto", marginRight:"auto"}}>
+          <View style={{width:400, marginLeft:"auto", marginRight:"auto", borderColor:"black",borderRadius:25,borderWidth: 2, padding: 10}}>
           <Text style={{color:"black",fontSize:16,textAlign:"left",marginTop:5,marginBottom:5}}   >{this.state.anyag.anyag_leiras} </Text>
       </View>
           </View>
