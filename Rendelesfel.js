@@ -1,36 +1,55 @@
 import React, { Component } from 'react';
-import { StyleSheet,Text, TextInput, View,TouchableOpacity } from 'react-native';
+import { StyleSheet,Text, TextInput, View,TouchableOpacity, Picker } from 'react-native';
 //import FileUpload from "./upload"
 
+const CONFIG = require('./config');
 export default class Bevitel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      valaszt: 0,
       rendelo_neve: "",
       rendelt_termek_fajtaja:"",
       rendelt_termek_neve:"",
       rendeles_mennyisege:"",
-
+      dataSource:[]
     };
   }
+  componentDidMount(){
+    return fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/fajtak')
+      .then((response) => response.json())
+      .then((responseJson) => {
 
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson,
+        }, function(){
+
+        });
+
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+
+}
 felvitel=async ()=>{
     //alert("megnyomva a gomb")
-
-    if (this.state.rendelo_neve=="" || this.state.rendelt_termek_fajtaja=="" || this.state.rendelt_termek_neve=="" || this.state.rendeles_mennyisege=="")
+    alert(this.state.valaszt)
+    if (this.state.rendelo_neve=="" || this.state.rendelt_termek_neve=="" || this.state.rendeles_mennyisege=="")
     {
       alert("Hiányzó adatok!")
       return
     }
     let bemenet={
       bev1:this.state.rendelo_neve,
-      bev2:this.state.rendelt_termek_fajtaja,
+      bev2:this.state.valaszt,
       bev3:this.state.rendelt_termek_neve,
       bev4:this.state.rendeles_mennyisege,
+
     }
 
-    fetch('http://localhost:8080/uj_rendeles_fel',{
+    fetch('http://localhost:'+CONFIG.PORT+'/uj_rendeles_fel',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -41,8 +60,6 @@ felvitel=async ()=>{
     .then((szoveg) => {
 
     alert(szoveg)
-    window.location.reload();
-    this.setState({});
 
 })
     
@@ -69,13 +86,19 @@ felvitel=async ()=>{
         <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Termék fajtája: 
           </Text>
-        <TextInput
-          placeholderTextColor="white"
-          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'blue',marginBottom:5,textAlignVertical:'top',color:"white"}}
-          placeholder="Adja meg a fajtáját:"
-          onChangeText={(rendelt_termek_fajtaja) => this.setState({rendelt_termek_fajtaja})}
-          value={this.state.rendelt_termek_fajtaja}
-        />
+        <View style={{marginLeft: "auto", marginRight: "auto"}}>
+        <Picker
+        selectedValue={this.state.valaszt}
+        style={{height: 50, width: 150,}}
+        onValueChange={async (itemValue) => {this.setState({valaszt:itemValue});alert(itemValue)}}
+        >
+        {this.state.dataSource.map((item) => (
+          <Picker.Item key={item.anyag_fajta_id} label={item.anyag_fajtaja} value={item.anyag_fajta_id} />
+        ))}
+       
+       
+        </Picker>
+        </View>
          <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Termék neve:
           </Text>
