@@ -35,7 +35,7 @@ export default class Bevitel extends Component {
 }
 felvitel=async ()=>{
     //alert("megnyomva a gomb")
-    alert(this.state.valaszt)
+    //alert(this.state.valaszt)
     if (this.state.rendelo_neve=="" || this.state.rendelt_termek_neve=="" || this.state.rendeles_mennyisege=="")
     {
       alert("Hiányzó adatok!")
@@ -70,7 +70,7 @@ felvitel=async ()=>{
     
     return (
       
-    <View style = {{backgroundColor:'darkblue',width:'80%',borderRadius:20,alignSelf:'center'}}>
+    <View style = {{backgroundColor:'darkblue',minHeight: 450,minWidth:'80%',borderRadius:20,alignSelf:'center'}}>
       <View style={{padding: 10}}>
           <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Rendelő neve:
@@ -86,11 +86,11 @@ felvitel=async ()=>{
         <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Termék fajtája: 
           </Text>
-        <View style={{marginLeft: "auto", marginRight: "auto"}}>
+        <View style={{marginLeft: "auto", marginRight: "auto", backgroundColor:"white"}}>
         <Picker
         selectedValue={this.state.valaszt}
         style={{height: 50, width: 150,}}
-        onValueChange={async (itemValue) => {this.setState({valaszt:itemValue});alert(itemValue)}}
+        onValueChange={async (itemValue) => {this.setState({valaszt:itemValue})}}
         >
         {this.state.dataSource.map((item) => (
           <Picker.Item key={item.anyag_fajta_id} label={item.anyag_fajtaja} value={item.anyag_fajta_id} />
@@ -121,7 +121,7 @@ felvitel=async ()=>{
           value={this.state.rendeles_mennyisege}
         />
          <TouchableOpacity
-          onPress={async ()=>this.felvitel()}>
+          onPress={async ()=>this.felvitel()} style={{}}>
           <View style={styles.gomb}>
             <Text style={styles.gombSzoveg}>Adatok felvitele</Text>
           </View>
@@ -142,11 +142,12 @@ const styles = StyleSheet.create({
             fontSize:25
     },
     gomb:{
-            height:45,
+            minHeight:45,
             marginTop: 20, 
             backgroundColor:'blue',
-            width:'45%',
+            width:'50%',
             alignSelf:'center',
-            borderRadius:10
+            borderRadius:10,
+            
     },
 });

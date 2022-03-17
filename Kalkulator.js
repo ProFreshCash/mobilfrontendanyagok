@@ -22,8 +22,16 @@ export default class PizzaTranslator extends Component {
   this.setState({ hosszusag: text })
 }
   szamitas = (hosszusag, szelesseg, magassag) =>{
-    var eredmeny = parseInt(hosszusag)*parseInt(szelesseg)*parseInt(magassag);
-    this.setState({ered: eredmeny})
+    if(this.state.hosszusag=="" || this.state.szelesseg=="" || this.state.magassag=="")
+    {
+      alert("Töltse ki a mezőket helyesen")
+    }
+    else{
+      var eredmeny = parseInt(hosszusag)*parseInt(szelesseg)*parseInt(magassag);
+      this.setState({ered: eredmeny})
+    }
+   
+    
   }
 
   render() {

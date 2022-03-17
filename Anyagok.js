@@ -49,7 +49,7 @@ export default class PizzaTranslator extends Component {
           <View style = {styles.modal} /* Modal Törzse */>
 
           
-          <View style={{width:400, marginLeft:"auto", marginRight:"auto", borderColor:"black",borderRadius:25,borderWidth: 2, padding: 10}}>
+          <View style={{minWidth:300, marginLeft:"auto", marginRight:"auto", borderColor:"black",borderRadius:25,borderWidth: 2, padding: 10}}>
           <Text style={{color:"black",fontSize:16,textAlign:"left",marginTop:5,marginBottom:5}}   >{this.state.anyag.anyag_leiras} </Text>
       </View>
           </View>
@@ -69,9 +69,9 @@ export default class PizzaTranslator extends Component {
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-        <View style={{paddingBottom: 20, width: 500,}}>
-        <View style={{flex: 1, flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10, }}>
-        <View style={{flex: 1, width: 400,height: 300, marginLeft: "auto", marginRight: "auto"}} >
+        <View style={{minWidth: 325,height: 300}}>
+        <View style={{flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10}}>
+        <View style={{flex: 1, Width: 150,height: 200, marginLeft: "auto", marginRight: "auto"}} >
 
 
         <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyagneve}</Text>
@@ -80,9 +80,9 @@ export default class PizzaTranslator extends Component {
           <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_fajtaja} </Text>
          </View>
 
-        <View style={{flex: 1,marginLeft: 5}}>
+        <View style={{flex: 1,marginLeft: 5, marginTop: 25}}>
         <TouchableOpacity  onPress={() => { this.displayModal(true); this.setState({anyag:item})}}>
-        <Image style={{ width: 200, height: 200, marginLeft:15}}
+        <Image style={{ width: 125, height: 125, marginLeft: 10}}
                  source={{uri: 'http://'+CONFIG.IP+':'+CONFIG.PORT+'/'+item.anyag_kep}}
                  resizeMode="contain"/>
         </TouchableOpacity >
