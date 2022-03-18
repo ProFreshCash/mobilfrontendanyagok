@@ -32,7 +32,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Anyagok">
         <Drawer.Screen name="Kalkulátor" component={CalcScreen} />
         <Drawer.Screen name="Anyagok" component={MattersScreen} />
-        <Drawer.Screen name="Rendelesfel" component={OrdersScreen} />
+        <Drawer.Screen name="Rendelés leadása" component={OrdersScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

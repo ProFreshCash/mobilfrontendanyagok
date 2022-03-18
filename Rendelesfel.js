@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet,Text, TextInput, View,TouchableOpacity, Picker } from 'react-native';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from 'react-native-responsive-screen';
 //import FileUpload from "./upload"
 
 const CONFIG = require('./config');

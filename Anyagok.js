@@ -1,7 +1,11 @@
 
 import React, { Component } from 'react';
 import { Text, View, FlatList, Image,Modal,StyleSheet,TouchableOpacity  } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from 'react-native-responsive-screen';
+//import { TouchableHighlight } from 'react-native-gesture-handler';
 
 const CONFIG = require('./config.js');
 
@@ -37,7 +41,7 @@ export default class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto"}}>
+      <View style={{padding: 10, marginLeft: "auto", marginRight: "auto",}}>
 
           <Modal
             animationType = {"slide"}
@@ -64,20 +68,21 @@ export default class PizzaTranslator extends Component {
           </Modal>
 
 
-
+      <View style={{width: widthPercentageToDP(80),
+          height: heightPercentageToDP(100)}}>
           <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
 
-        <View style={{minWidth: 325,height: 300}}>
+        <View style={{marginBottom: 15}}>
         <View style={{flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10}}>
-        <View style={{flex: 1, Width: 150,height: 200, marginLeft: "auto", marginRight: "auto"}} >
+        <View style={{flex: 1, marginLeft: "auto", marginRight: "auto"}} >
 
 
-        <Text style={{color:"black",fontSize:24,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyagneve}</Text>
-          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_merete}</Text>
-          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_ar} </Text>
-          <Text style={{color:"black",fontSize:30,textAlign:"center",marginTop:5,marginBottom:5}}   >{item.anyag_fajtaja} </Text>
+        <Text style={{color:"black",fontSize:18,textAlign:"center",marginTop:5,marginBottom:5}}   >Anyag neve: {item.anyag_neve}</Text>
+          <Text style={{color:"black",fontSize:16,textAlign:"center",marginTop:5,marginBottom:5}}   >Anyag mérete: {item.anyag_merete}</Text>
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Anyag ára: {item.anyag_ar} Ft</Text>
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:5,marginBottom:5}}   >Anyag fajtája: {item.anyag_fajtaja} </Text>
          </View>
 
         <View style={{flex: 1,marginLeft: 5, marginTop: 25}}>
@@ -91,6 +96,7 @@ export default class PizzaTranslator extends Component {
   </View>
         }
         />
+        </View>
       </View>
     );
   }
