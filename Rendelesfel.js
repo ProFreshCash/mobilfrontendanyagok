@@ -11,16 +11,19 @@ export default class Bevitel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      valaszt: 0,
+      fajtavalaszt: 0,
+      anyagnevvalaszt: 0,
       rendelo_neve: "",
       rendelt_termek_fajtaja:"",
       rendelt_termek_neve:"",
       rendeles_mennyisege:"",
-      dataSource:[]
+      dataSource:[],
+      nevetomb: []
     };
   }
+
   componentDidMount(){
-    return fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/fajtak')
+    fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/fajtak')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -28,7 +31,24 @@ export default class Bevitel extends Component {
           isLoading: false,
           dataSource: responseJson,
         }, function(){
+        alert(JSON.stringify(this.state.dataSource))
+        });
 
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+
+     fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/anyagnevek')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          nevetomb: responseJson,
+         
+        }, function(){
+          alert(JSON.stringify(this.state.nevetomb))
         });
 
       })
@@ -39,21 +59,21 @@ export default class Bevitel extends Component {
 }
 felvitel=async ()=>{
     //alert("megnyomva a gomb")
-    //alert(this.state.valaszt)
-    if (this.state.rendelo_neve=="" || this.state.rendelt_termek_neve=="" || this.state.rendeles_mennyisege=="")
+    alert(this.state.fajtavalaszt)
+    if (this.state.rendelo_neve=="" || this.state.rendeles_mennyisege=="")
     {
       alert("Hiányzó adatok!")
       return
     }
     let bemenet={
       bev1:this.state.rendelo_neve,
-      bev2:this.state.valaszt,
-      bev3:this.state.rendelt_termek_neve,
+      bev2:this.state.fajtavalaszt,
+      bev3:this.state.anyagnevvalaszt,
       bev4:this.state.rendeles_mennyisege,
 
     }
 
-    fetch('http://localhost:'+CONFIG.PORT+'/uj_rendeles_fel',{
+    fetch('http://'+CONFIG.IP+':'+CONFIG.PORT+'/uj_rendeles_fel',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -92,27 +112,29 @@ felvitel=async ()=>{
           </Text>
         <View style={{marginLeft: "auto", marginRight: "auto", backgroundColor:"white"}}>
         <Picker
-        selectedValue={this.state.valaszt}
+        selectedValue={this.state.fajtavalaszt}
         style={{height: 50, width: 150,}}
-        onValueChange={async (itemValue) => {this.setState({valaszt:itemValue})}}
+        onValueChange={async (itemValue) => {this.setState({fajtavalaszt:itemValue})}}
         >
         {this.state.dataSource.map((item) => (
           <Picker.Item key={item.anyag_fajta_id} label={item.anyag_fajtaja} value={item.anyag_fajta_id} />
         ))}
-       
-       
         </Picker>
         </View>
          <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Termék neve:
           </Text>
-        <TextInput
-          placeholderTextColor="white"
-          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'blue',borderColor:'black',color:"white"}}
-          placeholder="Adja meg az anyag nevét: "
-          onChangeText={(rendelt_termek_neve) => this.setState({rendelt_termek_neve})}
-          value={this.state.rendelt_termek_neve}
-        />
+        <View style={{marginLeft: "auto", marginRight: "auto", backgroundColor:"white"}}>
+        <Picker
+        selectedValue={this.state.anyagnevvalaszt}
+        style={{height: 50, width: 150,}}
+        onValueChange={async (itemValue) => {this.setState({anyagnevvalaszt:itemValue})}}
+        >
+        {this.state.nevetomb.map((item) => (
+          <Picker.Item key={item.anyag_id} label={item.anyag_neve} value={item.anyag_neve} />
+        ))}
+        </Picker>
+        </View>
 
         <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
               Mennyisége:
