@@ -16,6 +16,16 @@ export default class PizzaTranslator extends Component {
     szelesseg: '',
     ered: '',
  }
+ szamitas = (hosszusag, szelesseg, magassag) =>{
+  if(this.state.hosszusag=="" || this.state.szelesseg=="" || this.state.magassag=="")
+  {
+    alert("Töltse ki a mezőket helyesen")
+  }
+  else{
+    var eredmeny = parseInt(hosszusag)*parseInt(szelesseg)*parseInt(magassag);
+    this.setState({ered: eredmeny})
+  } 
+}
   magassagkezel = (text) => {
   this.setState({ magassag: text })
 }
@@ -25,18 +35,6 @@ export default class PizzaTranslator extends Component {
  hosszusagkezel = (text) => {
   this.setState({ hosszusag: text })
 }
-  szamitas = (hosszusag, szelesseg, magassag) =>{
-    if(this.state.hosszusag=="" || this.state.szelesseg=="" || this.state.magassag=="")
-    {
-      alert("Töltse ki a mezőket helyesen")
-    }
-    else{
-      var eredmeny = parseInt(hosszusag)*parseInt(szelesseg)*parseInt(magassag);
-      this.setState({ered: eredmeny})
-    }
-   
-    
-  }
 
   render() {
     return (
