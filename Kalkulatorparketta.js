@@ -13,25 +13,18 @@ export default class PizzaTranslator extends Component {
   }
   state = {
     hosszusag: "",
-    magassag: "",
     szelesseg: "",
     ered: "",
  }
- szamitas = async(hosszusag=0, szelesseg=0, magassag=0) =>{
-  if(hosszusag<1 || szelesseg<1 || magassag<1)
+ szamitas = async(hosszusag=0, szelesseg=0) =>{
+  if(hosszusag<1 || szelesseg<1)
   {
     Alert.alert('Hiba','Töltse ki a mezőket!')
   }
   else{
-    var eredmeny = parseFloat(hosszusag)*parseFloat(szelesseg)*parseFloat(magassag);
+    var eredmeny = parseFloat(hosszusag)*parseFloat(szelesseg);
     this.setState({ered: eredmeny.toFixed(2)})
   } 
-}
-  magassagkezel = (text) => {
-  if(text!=null)
-  {
-    this.setState({ magassag: text })
-  }
 }
   szelessegkezel = (text) => {
     if(text!=null)
@@ -59,17 +52,6 @@ export default class PizzaTranslator extends Component {
           height: heightPercentageToDP(21.5), marginLeft: "auto", marginRight: "auto"}}>
         
         <View style={{flex: 1, flexDirection: "row",}}>
-        <FontAwesome5 name="ruler-vertical" size={18} color="black" style={{marginTop:14}}/>
-        <Text style={{padding: 10,marginBottom: 5 ,  fontSize: 18, fontWeight: 'bold'}}>
-          Magasság (m): 
-        </Text>
-        <TextInput keyboardType='numeric'
-      style={{height: heightPercentageToDP(6), width: widthPercentageToDP(30),borderColor: 'black', borderWidth: 3, borderRadius: 25, marginRight: "auto", textAlign:"center", fontSize: 17, marginLeft: 20}}
-      onChangeText={this.magassagkezel}
-        />
-        </View>
-        
-        <View style={{flex: 1, flexDirection: "row",}}>
         <FontAwesome5 name="ruler-horizontal" size={18} color="black" style={{marginTop:14}}/>
         <Text style={{padding: 10, marginBottom: 5 , fontSize: 18, fontWeight: 'bold'}}>
           Szélesség (m): 
@@ -94,7 +76,7 @@ export default class PizzaTranslator extends Component {
         </View>
         
         <TouchableOpacity style={{marginTop: 15, fontSize: 25, backgroundColor: "blue", borderRadius: 25, height: heightPercentageToDP(5), width: widthPercentageToDP(35), marginLeft:"auto", marginRight:"auto", justifyContent:"center", alignItems:"center"}}
-        onPress={async()=> this.szamitas(this.state.magassag, this.state.szelesseg, this.state.hosszusag)}>
+        onPress={async()=> this.szamitas(this.state.szelesseg, this.state.hosszusag)}>
          <Text style={{textAlign: "center", justifyContent: "center", color: "white", fontWeight: "bold", fontSize: 18}}> Számítás </Text>
        </TouchableOpacity>
         
@@ -102,7 +84,7 @@ export default class PizzaTranslator extends Component {
        <Text style={{fontSize: 20, marginTop: 20, fontWeight: "bold", marginLeft: 20}}>Eredmény: </Text>
        <Text style={{fontSize: 20, marginTop: 20}}>{this.state.ered}</Text>
        <Text style={{fontSize: 20, marginLeft: 2, marginTop: 20}}>m</Text>
-       <Text style={{fontSize:10, lineHeight: 20, marginTop: 20}}>3</Text>
+       <Text style={{fontSize:10, lineHeight: 20, marginTop: 20}}>2</Text>
       </View>
 
       </View>

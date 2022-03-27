@@ -16,14 +16,18 @@ export default class PizzaTranslator extends Component {
     magassag: "",
     szelesseg: "",
     ered: "",
+    szukseglet: "",
  }
  szamitas = async(hosszusag=0, szelesseg=0, magassag=0) =>{
+
   if(hosszusag<1 || szelesseg<1 || magassag<1)
   {
     Alert.alert('Hiba','Töltse ki a mezőket!')
   }
   else{
-    var eredmeny = parseFloat(hosszusag)*parseFloat(szelesseg)*parseFloat(magassag);
+    var eredmeny = parseFloat(hosszusag)*parseFloat(szelesseg)*parseFloat(magassag)*1.2;
+    var zsakcement= 3*eredmeny;
+    this.setState({szukseglet: zsakcement.toFixed(2)})
     this.setState({ered: eredmeny.toFixed(2)})
   } 
 }
@@ -104,7 +108,9 @@ export default class PizzaTranslator extends Component {
        <Text style={{fontSize: 20, marginLeft: 2, marginTop: 20}}>m</Text>
        <Text style={{fontSize:10, lineHeight: 20, marginTop: 20}}>3</Text>
       </View>
-
+      <View style={{flex: 1, flexDirection: "row",width: widthPercentageToDP(80),height: heightPercentageToDP(10), justifyContent:"center", alignItems:"center"}}>
+      <Text style={{fontSize: 20, marginTop: 20}}>Ajánlott {this.state.szukseglet} mázsányi cement</Text>
+      </View>
       </View>
     );
   }
