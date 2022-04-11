@@ -56,7 +56,7 @@ export default class PizzaTranslator extends Component {
       height: heightPercentageToDP(52.5)}}>
        
         <View style={{justifyContent:"center", alignItems:"center", width: widthPercentageToDP(90),height: heightPercentageToDP(9.4)}}>
-          <Text style={{fontSize: 20, fontWeight: "bold", textAlign: "center", marginBottom: 20, textDecorationLine:"underline", textTransform:"uppercase"}}>Betonalap mennyiségének kiszámítása mixerrel</Text>
+          <Text style={{fontSize: 20, fontWeight: "bold", textAlign: "center", marginBottom: 20, textDecorationLine:"underline", textTransform:"uppercase"}}>Betonalap mennyiségének kiszámítása kézi keveréssel</Text>
         </View>
 
         <View style={{width: widthPercentageToDP(70),

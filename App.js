@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Anyagok from "./Anyagok";
 import Kalkulator from "./Kalkulator";
 import Rendelesfel from "./Rendelesfel";
-import ParkettaKalkulator from "./Kalkulatorparketta";
+import CsempeKalkulator from "./Kalkulatorcsempe";
 import KeziBetonKalkulator from "./Kalkulatorbetonkezi";
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -16,9 +16,9 @@ function CalcScreen({ navigation }) {
   );
 }
 
-function ParkCalcScreen({ navigation }) {
+function CsempCalcScreen({ navigation }) {
   return (
-    <ParkettaKalkulator/>
+    <CsempeKalkulator/>
   );
 
 }
@@ -50,8 +50,8 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Beton kalkulátor">
         <Drawer.Screen name="Beton kalkulátor" options={{ drawerIcon: ({ color }) => (
         <FontAwesome5 name="calculator" color={color} size={20} style={{marginRight: -19}}/> )}} component={CalcScreen} />
-        <Drawer.Screen name="Parketta kalkulátor" options={{ drawerIcon: ({ color }) => (
-        <FontAwesome5 name="calculator" color={color} size={20} style={{marginRight: -19}}/> )}} component={ParkCalcScreen} />
+        <Drawer.Screen name="Csempe kalkulátor" options={{ drawerIcon: ({ color }) => (
+        <FontAwesome5 name="calculator" color={color} size={20} style={{marginRight: -19}}/> )}} component={CsempCalcScreen} />
          <Drawer.Screen name="Kézi beton kalkulátor" options={{ drawerIcon: ({ color }) => (
         <FontAwesome5 name="calculator" color={color} size={20} style={{marginRight: -19}}/> )}} component={HandCalcScreen} />
         <Drawer.Screen name="Anyagok" options={{ drawerIcon: ({ color }) => (
