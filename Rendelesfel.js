@@ -11,8 +11,8 @@ export default class Bevitel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fajtavalaszt: 0,
-      anyagnevvalaszt: 0,
+      fajtavalaszt: 1,
+      anyagnevvalaszt: 1,
       rendelo_neve: "",
       rendelt_termek_fajtaja:"",
       rendelt_termek_neve:"",

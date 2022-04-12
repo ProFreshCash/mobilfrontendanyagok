@@ -42,7 +42,7 @@ export default class PizzaTranslator extends Component {
   render() {
     return (
       <View style={{padding: 10, marginLeft:"auto", marginRight: "auto", borderRadius: 15, borderColor: "blue", borderWidth: 5, marginTop: 20, width: widthPercentageToDP(95),
-      height: heightPercentageToDP(52.5),backgroundColor:"lightgrey"}}>
+      height: heightPercentageToDP(52.5),backgroundColor:"#E5E5B3"}}>
        
         <View style={{justifyContent:"center", alignItems:"center", width: widthPercentageToDP(90),height: heightPercentageToDP(9.4)}}>
           <Text style={{fontSize: 20, fontWeight: "bold", textAlign: "center", marginBottom: 20, textDecorationLine:"underline", textTransform:"uppercase"}}>Csempe terület kiszámítása</Text>
