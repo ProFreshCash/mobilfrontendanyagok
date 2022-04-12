@@ -53,7 +53,7 @@ export default class PizzaTranslator extends Component {
   render() {
     return (
       <View style={{padding: 10, marginLeft:"auto", marginRight: "auto", borderRadius: 15, borderColor: "blue", borderWidth: 5, marginTop: 20, width: widthPercentageToDP(95),
-      height: heightPercentageToDP(52.5)}}>
+      height: heightPercentageToDP(54.5), backgroundColor:"lightgrey"}}>
        
         <View style={{justifyContent:"center", alignItems:"center", width: widthPercentageToDP(90),height: heightPercentageToDP(9.4)}}>
           <Text style={{fontSize: 20, fontWeight: "bold", textAlign: "center", marginBottom: 20, textDecorationLine:"underline", textTransform:"uppercase"}}>Betonalap mennyiségének kiszámítása kézi keveréssel</Text>
@@ -109,7 +109,7 @@ export default class PizzaTranslator extends Component {
        <Text style={{fontSize:10, lineHeight: 20, marginTop: 20}}>3</Text>
       </View>
       <View style={{flex: 1, flexDirection: "row",width: widthPercentageToDP(80),height: heightPercentageToDP(10), justifyContent:"center", alignItems:"center"}}>
-      <Text style={{fontSize: 20, marginTop: 20}}>Ajánlott {this.state.szukseglet} mázsányi cement</Text>
+      <Text style={{fontSize: 20, marginTop: 20}}>Ajánlott <Text style={{fontWeight:"bold"}}>{this.state.szukseglet}</Text> mázsányi cement</Text>
       </View>
       </View>
     );

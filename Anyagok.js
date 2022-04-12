@@ -53,7 +53,7 @@ export default class PizzaTranslator extends Component {
           <View style = {styles.modal} /* Modal Törzse */>
 
           
-          <View style={{minWidth:300, marginLeft:"auto", marginRight:"auto", borderColor:"black",borderRadius:25,borderWidth: 2, padding: 10}}>
+          <View style={{minWidth:300, marginLeft:"auto", marginRight:"auto", borderColor:"black",borderRadius:25,borderWidth: 2, padding: 10, backgroundColor: "#D2AC79"}}>
           <Text style={{color:"black",fontSize:16,textAlign:"left",marginTop:5,marginBottom:5}}   >{this.state.anyag.anyag_leiras} </Text>
       </View>
           </View>
@@ -75,8 +75,8 @@ export default class PizzaTranslator extends Component {
           renderItem={({item}) => 
 
         <View style={{marginBottom: 15}}>
-        <View style={{flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10}}>
-        <View style={{flex: 1, marginLeft: "auto", marginRight: "auto"}} >
+        <View style={{flexDirection: 'row', borderColor: "black", borderWidth: 3, borderRadius: 15, padding: 10,backgroundColor: "#D2AC79"}}>
+        <View style={{flex: 1, marginLeft: "auto", marginRight: "auto",}} >
 
 
         <Text style={{color:"black",fontSize:18,textAlign:"center",marginTop:5,marginBottom:5}}   >Anyag neve: {item.anyag_neve}</Text>

@@ -31,7 +31,7 @@ export default class Bevitel extends Component {
           isLoading: false,
           dataSource: responseJson,
         }, function(){
-        alert(JSON.stringify(this.state.dataSource))
+        //alert(JSON.stringify(this.state.dataSource))
         });
 
       })
@@ -48,7 +48,7 @@ export default class Bevitel extends Component {
           nevetomb: responseJson,
          
         }, function(){
-          alert(JSON.stringify(this.state.nevetomb))
+          //alert(JSON.stringify(this.state.nevetomb))
         });
 
       })
@@ -94,20 +94,20 @@ felvitel=async ()=>{
     
     return (
       
-    <View style = {{backgroundColor:'darkblue',minHeight: 450,minWidth:'80%',borderRadius:20,alignSelf:'center'}}>
+    <View style = {{backgroundColor:'#D2AC79',minHeight: 450,minWidth:'80%',borderRadius:20,alignSelf:'center'}}>
       <View style={{padding: 10}}>
-          <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+          <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Rendelő neve:
           </Text>
         <TextInput
-          placeholderTextColor="white"
-          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'blue',borderColor:'black',color:"white"}}
+          placeholderTextColor="black"
+          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'white',borderColor:'black',color:"black"}}
           placeholder="Adja meg a nevét: "
           onChangeText={(rendelo_neve) => this.setState({rendelo_neve})}
           value={this.state.rendelo_neve}
         />
 
-        <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+        <Text style={{paddingTop: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Termék fajtája: 
           </Text>
         <View style={{marginLeft: "auto", marginRight: "auto", backgroundColor:"white"}}>
@@ -121,7 +121,7 @@ felvitel=async ()=>{
         ))}
         </Picker>
         </View>
-         <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+         <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Termék neve:
           </Text>
         <View style={{marginLeft: "auto", marginRight: "auto", backgroundColor:"white"}}>
@@ -136,12 +136,12 @@ felvitel=async ()=>{
         </Picker>
         </View>
 
-        <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+        <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Mennyisége:
           </Text>
         <TextInput
-          placeholderTextColor="white"
-          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'blue',borderColor:'black',color:"white"}}
+          placeholderTextColor="black"
+          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'white',borderColor:'black',color:"black"}}
           placeholder="PL: db szám vagy köbméterben"
           onChangeText={(rendeles_mennyisege) => this.setState({rendeles_mennyisege})}
           value={this.state.rendeles_mennyisege}
@@ -162,7 +162,7 @@ felvitel=async ()=>{
 const styles = StyleSheet.create({
     gombSzoveg:{
             textAlign:'center',
-            color:'white',
+            color:'black',
             marginTop:'auto',
             marginBottom:'auto',
             fontSize:25
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     gomb:{
             minHeight:45,
             marginTop: 20, 
-            backgroundColor:'blue',
+            backgroundColor:'#8EFC9D',
             width:'50%',
             alignSelf:'center',
             borderRadius:10,
